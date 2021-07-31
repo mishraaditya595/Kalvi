@@ -3,16 +3,15 @@ package xyz.theadityamishra.kalvi.ui.home
 import android.content.Context
 import android.graphics.drawable.BitmapDrawable
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.palette.graphics.Palette
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import kotlinx.coroutines.coroutineScope
 import xyz.theadityamishra.kalvi.databinding.LayoutSubjectListBinding
 
-class SubjectsAdapter(context: Context, subjectList: ArrayList<String>, imageList: ArrayList<String>): RecyclerView.Adapter<SubjectsAdapter.SubjectsViewHolder>()
+class SubjectsAdapter(context: Context, subjectList: ArrayList<String>, imageList: ArrayList<String>):
+    RecyclerView.Adapter<SubjectsAdapter.SubjectsViewHolder>()
 {
 
     lateinit var context: Context

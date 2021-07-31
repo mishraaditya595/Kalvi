@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,16 +8,84 @@
     tools:context=".ui.dashboard.DashboardFragment" >
 
     <TextView
-        android:id="@+id/text_dashboard"
+        android:id="@+id/statisticsTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Statistics"
+        style="@style/TextAppearance.AppCompat.Headline"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_marginLeft="12dp"
+        android:layout_margin="8dp"
+        />
+
+    <org.eazegraph.lib.charts.BarChart
+        android:id="@+id/statisticsBarchart"
+        android:layout_width="match_parent"
+        android:layout_height="256dp"
+        android:padding="10dp"
+        app:egFixedBarWidth="true"
+        app:egBarWidth="20dp"
+        app:egLegendHeight="40dp"
+        android:layout_margin="12dp"
+        android:layout_below="@id/statisticsTV"
+        />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/percentageCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_below="@+id/statisticsBarchart"
+        app:cardCornerRadius="12dp"
+        android:layout_margin="12dp"
+        android:padding="3dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/percentTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Percentage"
+                style="@style/TextAppearance.AppCompat.Headline"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="35dp"
+                />
+
+            <TextView
+                android:id="@+id/percentNumTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/percentTV"
+                android:text="69.73%"
+                style="@style/TextAppearance.AppCompat.Headline"
+                android:textSize="38sp"
+                android:textStyle="bold"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginBottom="15dp"
+                />
+
+            <org.eazegraph.lib.charts.PieChart
+                android:id="@+id/percentPieChart"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="15dp"
+                android:padding="3dp"
+                app:egLegendTextSize="18sp"
+                />
+
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+    
+</RelativeLayout>

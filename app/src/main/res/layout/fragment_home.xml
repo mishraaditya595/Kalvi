@@ -7,24 +7,134 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment" >
 
-    <TextView
-        android:id="@+id/AllSubjectsText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Subjects"
-        style="@style/TextAppearance.AppCompat.Large"
-        android:textStyle="bold"
-        android:layout_alignParentTop="true"
-        android:layout_margin="5dp"
-        />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/allsubjectsRV"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@+id/AllSubjectsText"
-        android:layout_marginTop="5dp"
-        />
+        android:layout_alignParentTop="true"
+        android:backgroundTintMode="screen"
+        app:cardCornerRadius="15dp"
+        android:layout_margin="5dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="12dp"
+            >
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_pic"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:src="@mipmap/ic_launcher"
+                android:scaleType="centerCrop"
+                android:layout_marginTop="3dp"
+                />
+
+            <TextView
+                android:id="@+id/profile_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Android Studio"
+                style="@style/TextAppearance.AppCompat.Headline"
+                android:textStyle="bold"
+                android:textSize="26dp"
+                android:layout_toRightOf="@+id/profile_pic"
+                android:layout_marginLeft="20dp"
+
+                />
+
+            <TextView
+                android:id="@+id/profile_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Progress for today: 57%"
+                style="@style/TextAppearance.AppCompat.Headline"
+                android:textSize="14dp"
+                android:layout_toRightOf="@+id/profile_pic"
+                android:layout_below="@+id/profile_name"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="3dp"
+                />
+
+            <kr.co.prnd.StepProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_marginTop="14dp"
+                android:layout_below="@id/profile_score"
+                android:layout_toRightOf="@id/profile_pic"
+                android:layout_marginLeft="20dp"
+                app:max="10"
+                app:step="6"
+                app:stepDoneColor="#ff0000"
+                app:stepMargin="8dp"
+                app:stepUndoneColor="#dedede" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/card">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/AllSubjectsTV"
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/card"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="12dp"
+                android:text="Subjects"
+                android:textStyle="bold"
+                android:textSize="22sp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/allsubjectsRV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@+id/AllSubjectsTV"
+                android:layout_marginTop="12dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                />
+
+            <TextView
+                android:id="@+id/todayScheduleTV"
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/allsubjectsRV"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="12dp"
+                android:text="Today's Schedule"
+                android:textStyle="bold"
+                android:textSize="22sp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/scheduleRV"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:orientation="vertical"
+                android:layout_below="@+id/todayScheduleTV"
+                android:layout_marginTop="12dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+
 
 </RelativeLayout>

@@ -18,6 +18,10 @@ class HomeFragment : Fragment() {
 
   lateinit var subjectImageList: ArrayList<String>
   lateinit var subjectNameList: ArrayList<String>
+  lateinit var scheduleTitleList: ArrayList<String>
+  lateinit var scheduleTimeList: ArrayList<String>
+  lateinit var scheduleIVList: ArrayList<String>
+
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
     homeViewModel =
@@ -36,10 +40,11 @@ override fun onDestroyView() {
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?)
   {
-    getImages()
+    getDataForSubjectsRV()
+    getDataForScheduleRV()
   }
 
-  private fun getImages()
+  private fun getDataForSubjectsRV()
   {
     subjectImageList = arrayListOf()
     subjectNameList = arrayListOf()
@@ -61,14 +66,51 @@ override fun onDestroyView() {
     subjectNameList.add("Austrailia")
     subjectImageList.add("https://i.imgur.com/ZcLLrkY.jpg")
     subjectNameList.add("Washington")
-    initRecyclerView()
+    initSubjectsRecyclerView()
   }
 
-  private fun initRecyclerView()
+  private fun initSubjectsRecyclerView()
   {
     var layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
     binding.allsubjectsRV.layoutManager = layoutManager
     val adapter = SubjectsAdapter(requireContext(), subjectNameList, subjectImageList)
     binding.allsubjectsRV.adapter = adapter
+  }
+
+  private fun getDataForScheduleRV()
+  {
+    scheduleIVList = arrayListOf()
+    scheduleTimeList = arrayListOf()
+    scheduleTitleList = arrayListOf()
+
+    scheduleTitleList.add("Master Quiz")
+    scheduleTimeList.add("15s later")
+    scheduleIVList.add("https://i.redd.it/j6myfqglup501.jpg")
+
+    scheduleTitleList.add("Biology Class")
+    scheduleTimeList.add("1h later")
+    scheduleIVList.add("https://i.redd.it/qn7f9oqu7o501.jpg")
+
+    scheduleTitleList.add("Physics Lab")
+    scheduleTimeList.add("2h later")
+    scheduleIVList.add("https://i.redd.it/qn7f9oqu7o501.jpg")
+
+    scheduleTitleList.add("Chemistry Class")
+    scheduleTimeList.add("3h later")
+    scheduleIVList.add("https://i.redd.it/tpsnoz5bzo501.jpg")
+
+    scheduleTitleList.add("English Quiz")
+    scheduleTimeList.add("4h later")
+    scheduleIVList.add("https://i.redd.it/obx4zydshg601.jpg")
+
+    initScheduleRecyclerView()
+  }
+
+  private fun initScheduleRecyclerView()
+  {
+    var layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
+    binding.scheduleRV.layoutManager = layoutManager
+    val adapter = ScheduleAdapter(requireContext(), scheduleTitleList, scheduleTimeList, scheduleIVList)
+    binding.scheduleRV.adapter = adapter
   }
 }

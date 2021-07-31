@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="5dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/schedule_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="10dp"
+        android:layout_centerInParent="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/schedule_iv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:src="@color/purple_200"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/scheduleTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Master Quiz"
+                style="@style/TextAppearance.AppCompat.Subhead"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_toRightOf="@id/schedule_iv"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="15dp"
+                />
+
+            <TextView
+                android:id="@+id/scheduleTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Now"
+                style="@style/TextAppearance.AppCompat.Small"
+                android:textStyle="bold"
+                android:layout_toRightOf="@id/schedule_iv"
+                android:layout_below="@id/scheduleTitle"
+                android:layout_marginTop="2dp"
+                android:layout_marginLeft="15dp"
+                />
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

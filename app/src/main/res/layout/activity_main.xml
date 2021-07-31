@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:forceDarkAllowed="true"
-    android:paddingTop="?attr/actionBarSize" >
+    android:layout_height="match_parent">
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:fadingEdge="horizontal"
-        app:menu="@menu/bottom_nav_menu"
-        app:labelVisibilityMode="selected"
-        app:elevation="12dp"
         style="@style/Widget.MaterialComponents.BottomNavigationView.PrimarySurface"
-        />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fadingEdge="horizontal"
+        app:elevation="12dp"
+        app:labelVisibilityMode="selected"
+       android:layout_alignParentBottom="true"
+        app:menu="@menu/bottom_nav_menu" />
 
     <fragment
         android:id="@+id/nav_host_fragment_activity_main"
@@ -26,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:defaultNavHost="true"
-        android:layout_alignParentTop="true"
+        android:layout_above="@id/nav_view"
         app:navGraph="@navigation/mobile_navigation" />
 
 </RelativeLayout>

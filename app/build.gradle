@@ -69,4 +69,11 @@ dependencies {
     //Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3'
 
+    //segmented progress bar
+    implementation 'kr.co.prnd:stepprogressbar:1.0.0-alpha1'
+
+    //graph
+    implementation 'com.github.blackfizz:eazegraph:1.2.5l@aar'
+    implementation 'com.nineoldandroids:library:2.4.0'
+
 }
