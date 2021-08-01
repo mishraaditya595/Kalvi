@@ -14,7 +14,7 @@
         android:layout_alignParentTop="true"
         android:backgroundTintMode="screen"
         app:cardCornerRadius="15dp"
-        android:layout_margin="5dp"
+        android:layout_margin="15dp"
         >
 
         <RelativeLayout
