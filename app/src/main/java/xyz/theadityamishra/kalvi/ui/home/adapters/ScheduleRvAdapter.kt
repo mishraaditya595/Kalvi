@@ -3,6 +3,7 @@ package xyz.theadityamishra.kalvi.ui.home
 import android.content.Context
 import android.graphics.drawable.BitmapDrawable
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.TimePicker
 import android.widget.Toast
@@ -10,8 +11,9 @@ import androidx.palette.graphics.Palette
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import xyz.theadityamishra.kalvi.databinding.LayoutScheduleListBinding
+import xyz.theadityamishra.kalvi.ui.listeners.EventClickListener
 
-class ScheduleAdapter(context: Context, scheduleTitle: ArrayList<String>, scheduleTime: ArrayList<String>, scheduleIV: ArrayList<String>): RecyclerView.Adapter<ScheduleAdapter.ScheduleViewHolder>()
+class ScheduleAdapter(context: Context, scheduleTitle: ArrayList<String>, scheduleTime: ArrayList<String>, scheduleIV: ArrayList<String>, eventClickListener: EventClickListener): RecyclerView.Adapter<ScheduleAdapter.ScheduleViewHolder>()
 {
 
     lateinit var context: Context
@@ -19,6 +21,7 @@ class ScheduleAdapter(context: Context, scheduleTitle: ArrayList<String>, schedu
     lateinit var scheduleTime: ArrayList<String>
     lateinit var scheduleIV: ArrayList<String>
     lateinit var binding: LayoutScheduleListBinding
+    lateinit var eventClickListener: EventClickListener
 
     init
     {
@@ -26,6 +29,7 @@ class ScheduleAdapter(context: Context, scheduleTitle: ArrayList<String>, schedu
         this.scheduleTime = scheduleTime
         this.scheduleTitle = scheduleTitle
         this.scheduleIV = scheduleIV
+        this.eventClickListener = eventClickListener
     }
 
     inner class ScheduleViewHolder(binding: LayoutScheduleListBinding): RecyclerView.ViewHolder(binding.root)
@@ -57,5 +61,14 @@ class ScheduleAdapter(context: Context, scheduleTitle: ArrayList<String>, schedu
         }
 
         binding.scheduleTime.text = scheduleTime[position]
+
+        if (binding.scheduleTime.text == "15s later")
+        {
+            binding.startEventCard.visibility = View.VISIBLE
+            binding.startEventCard.setOnClickListener {
+                eventClickListener.onEventClicked()
+                Toast.makeText(context,"click",Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }

@@ -4,12 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import xyz.theadityamishra.kalvi.R
 import xyz.theadityamishra.kalvi.databinding.FragmentHomeBinding
+import xyz.theadityamishra.kalvi.ui.listeners.EventClickListener
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), EventClickListener {
 
   private lateinit var homeViewModel: HomeViewModel
   private var _binding: FragmentHomeBinding? = null
@@ -110,7 +115,15 @@ override fun onDestroyView() {
   {
     var layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
     binding.scheduleRV.layoutManager = layoutManager
-    val adapter = ScheduleAdapter(requireContext(), scheduleTitleList, scheduleTimeList, scheduleIVList)
+    val adapter = ScheduleAdapter(requireContext(), scheduleTitleList, scheduleTimeList, scheduleIVList, this)
     binding.scheduleRV.adapter = adapter
+  }
+
+  override fun onEventClicked()
+  {
+    val action = HomeFragmentDirections.actionNavigationHomeToBlankFragment2()
+    findNavController().navigate(action)
+    Toast.makeText(context,"click", Toast.LENGTH_SHORT).show()
+
   }
 }

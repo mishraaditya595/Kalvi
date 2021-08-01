@@ -55,6 +55,32 @@
                 android:layout_marginLeft="15dp"
                 />
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/startEventCard"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                app:cardCornerRadius="12dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="8dp"
+                android:visibility="gone">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="START"
+                        android:textStyle="bold"
+                        />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
 
         </RelativeLayout>
 
