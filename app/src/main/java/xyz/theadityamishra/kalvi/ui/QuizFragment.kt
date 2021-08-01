@@ -37,6 +37,7 @@ class QuizFragment : Fragment()
         super.onViewCreated(view, savedInstanceState)
 
         var optionsMap = setupQuestions()
+        scoreList = arrayListOf()
 
         binding.QuestionTV.text = questionsList[c]
         binding.QText.text = "Question ${c+1}"
@@ -59,13 +60,16 @@ class QuizFragment : Fragment()
                 binding.optionText2.text = options[1]
                 binding.optionText3.text = options[2]
                 binding.optionText4.text = options[3]
+
+                answerCheck(optionsMap)
+
             }
             else
             {
                 var total: Int = 0
                 for (i in scoreList)
                     total+=i
-                Toast.makeText(requireContext(),total,Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(),"$total",Toast.LENGTH_LONG).show()
             }
         }
 
@@ -84,7 +88,6 @@ class QuizFragment : Fragment()
             }
         }
 
-//        answerCheck(optionsMap)
 
     }
 
@@ -97,6 +100,7 @@ class QuizFragment : Fragment()
         options0.add("gametes, zygote, embryo, seedling")
         options0.add("seedling, embryo, zygote, gametes")
         options0.add("gametes, embryo, zygote, seedling")
+        options0.add("gametes, zygote, embryo, seedling")
         options0.add("gametes, zygote, embryo, seedling")
         optionsMap.add(options0)
 
@@ -136,26 +140,40 @@ class QuizFragment : Fragment()
     {
         val ans = (optionsMap.get(c))
         var answer: String = ""
+        Toast.makeText(requireContext(),"${ans.size}",Toast.LENGTH_SHORT).show()
         if (!ans.isNullOrEmpty())
-            answer = ans[4]
+            answer = ans[4-1]
         binding.cardOption1.setOnClickListener {
             if (binding.optionText1.text.equals(answer))
+            {
                 scoreList.add(1)
+                Toast.makeText(requireContext(),"true",Toast.LENGTH_SHORT).show()
+            }
         }
 
         binding.cardOption2.setOnClickListener {
             if (binding.optionText2.text.equals(answer))
+            {
                 scoreList.add(1)
+                Toast.makeText(requireContext(),"true",Toast.LENGTH_SHORT).show()
+            }
         }
 
         binding.cardOption3.setOnClickListener {
             if (binding.optionText3.text.equals(answer))
+            {
                 scoreList.add(1)
+                Toast.makeText(requireContext(),"true",Toast.LENGTH_SHORT).show()
+            }
         }
 
         binding.cardOption4.setOnClickListener {
             if (binding.optionText4.text.equals(answer))
+            {
                 scoreList.add(1)
+                Toast.makeText(requireContext(),"true",Toast.LENGTH_SHORT).show()
+
+            }
         }
 
     }
