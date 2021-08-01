@@ -121,9 +121,7 @@ override fun onDestroyView() {
 
   override fun onEventClicked()
   {
-    val action = HomeFragmentDirections.actionNavigationHomeToBlankFragment2()
+    val action = HomeFragmentDirections.actionNavigationHomeToQuizFragment()
     findNavController().navigate(action)
-    Toast.makeText(context,"click", Toast.LENGTH_SHORT).show()
-
   }
 }

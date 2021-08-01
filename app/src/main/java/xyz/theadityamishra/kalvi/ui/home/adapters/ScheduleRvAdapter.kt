@@ -67,7 +67,6 @@ class ScheduleAdapter(context: Context, scheduleTitle: ArrayList<String>, schedu
             binding.startEventCard.visibility = View.VISIBLE
             binding.startEventCard.setOnClickListener {
                 eventClickListener.onEventClicked()
-                Toast.makeText(context,"click",Toast.LENGTH_SHORT).show()
             }
         }
     }

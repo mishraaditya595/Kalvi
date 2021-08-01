@@ -11,11 +11,8 @@
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_navigation_home_to_quizFragment"
+            android:id="@+id/action_navigation_home_to_quiz_fragment"
             app:destination="@id/quizFragment" />
-        <action
-            android:id="@+id/action_navigation_home_to_blankFragment2"
-            app:destination="@id/blankFragment2" />
     </fragment>
 
     <fragment
@@ -32,15 +29,6 @@
     <fragment
         android:id="@+id/quizFragment"
         android:name="xyz.theadityamishra.kalvi.ui.QuizFragment"
-        android:label="fragment_quiz"
-        tools:layout="@layout/fragment_quiz" >
-        <action
-            android:id="@+id/action_quizFragment_to_navigation_home"
-            app:destination="@id/navigation_home" />
-    </fragment>
-    <fragment
-        android:id="@+id/blankFragment2"
-        android:name="xyz.theadityamishra.kalvi.ui.BlankFragment"
         android:label="fragment_blank"
-        tools:layout="@layout/fragment_blank" />
+        tools:layout="@layout/fragment_quiz" />
 </navigation>
