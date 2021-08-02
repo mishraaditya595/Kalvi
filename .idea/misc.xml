@@ -9,6 +9,7 @@
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_quiz.xml" value="0.2194078947368421" />
+        <entry key="app/src/main/res/layout/fragment_quiz_result_dashboard.xml" value="0.1" />
         <entry key="app/src/main/res/layout/header_card_bg.xml" value="0.1" />
         <entry key="app/src/main/res/layout/layout_schedule_list.xml" value="0.2194078947368421" />
         <entry key="app/src/main/res/layout/layout_subject_list.xml" value="0.33" />

@@ -1,6 +1,7 @@
 package xyz.theadityamishra.kalvi
 
 import android.os.Bundle
+import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -28,5 +29,15 @@ private lateinit var binding: ActivityMainBinding
             R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications))
         //setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            if (destination.id == R.id.quizFragment)
+                binding.navView.visibility = View.GONE
+            else if (destination.id == R.id.quizResultDashboard)
+                binding.navView.visibility = View.GONE
+            else
+                binding.navView.visibility = View.VISIBLE
+
+        }
     }
 }

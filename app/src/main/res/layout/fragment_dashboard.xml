@@ -8,10 +8,43 @@
     tools:context=".ui.dashboard.DashboardFragment" >
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/statisticsCard"
+        android:id="@+id/dashboardCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        app:cardCornerRadius="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="30dp"
+        android:elevation="20dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Student Dashboard"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp"
+                style="@style/TextAppearance.AppCompat.Headline"
+                android:textStyle="bold"
+                android:textSize="32sp"
+                />
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/statisticsCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dashboardCard"
         app:cardCornerRadius="12dp"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"
@@ -24,15 +57,14 @@
 
             <TextView
                 android:id="@+id/statisticsTV"
+                style="@style/TextAppearance.AppCompat.Headline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Your Statistics"
-                style="@style/TextAppearance.AppCompat.Headline"
-                android:textSize="26sp"
-                android:textStyle="bold"
                 android:layout_marginLeft="35dp"
                 android:layout_marginTop="15dp"
-                />
+                android:text="Your Statistics"
+                android:textSize="26sp"
+                android:textStyle="bold" />
 
             <org.eazegraph.lib.charts.BarChart
                 android:id="@+id/statisticsBarchart"

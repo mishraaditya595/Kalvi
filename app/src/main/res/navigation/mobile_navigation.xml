@@ -30,5 +30,16 @@
         android:id="@+id/quizFragment"
         android:name="xyz.theadityamishra.kalvi.ui.QuizFragment"
         android:label="fragment_blank"
-        tools:layout="@layout/fragment_quiz" />
+        tools:layout="@layout/fragment_quiz" >
+        <action
+            android:id="@+id/action_quizFragment_to_quizResultDashboard"
+            app:destination="@id/quizResultDashboard"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:popEnterAnim="@anim/fragment_fade_enter" />
+    </fragment>
+    <fragment
+        android:id="@+id/quizResultDashboard"
+        android:name="xyz.theadityamishra.kalvi.ui.QuizResultDashboard"
+        android:label="fragment_quiz_result_dashboard"
+        tools:layout="@layout/fragment_quiz_result_dashboard" />
 </navigation>

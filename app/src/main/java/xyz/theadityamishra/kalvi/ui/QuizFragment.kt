@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import xyz.theadityamishra.kalvi.R
 import xyz.theadityamishra.kalvi.databinding.FragmentQuizBinding
 
 class QuizFragment : Fragment()
@@ -19,6 +21,11 @@ class QuizFragment : Fragment()
     private lateinit var questionsList: ArrayList<String>
 //    private lateinit var optionsMap: HashMap<Int, ArrayList<String>>
     private lateinit var scoreList: ArrayList<Int>
+
+
+    companion object {
+        private var markList: ArrayList<Int> = arrayListOf()
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
@@ -39,14 +46,17 @@ class QuizFragment : Fragment()
         var optionsMap = setupQuestions()
         scoreList = arrayListOf()
 
+
         binding.QuestionTV.text = questionsList[c]
         binding.QText.text = "Question ${c+1}"
-//        Toast.makeText(requireContext(),"${optionsMap.size}, $c",Toast.LENGTH_SHORT).show()
         val options = optionsMap[2]!!
         binding.optionText1.text = options[0]
         binding.optionText2.text = options[1]
         binding.optionText3.text = options[2]
         binding.optionText4.text = options[3]
+        val mark = answerCheck(optionsMap,c+1)
+
+        var answerMap = mutableMapOf<Int, Int>()
 
         binding.navigateAfter.setOnClickListener {
             c+=1
@@ -60,16 +70,15 @@ class QuizFragment : Fragment()
                 binding.optionText2.text = options[1]
                 binding.optionText3.text = options[2]
                 binding.optionText4.text = options[3]
-
-                answerCheck(optionsMap)
+                val mark = answerCheck(optionsMap,c+1)
 
             }
             else
             {
-                var total: Int = 0
-                for (i in scoreList)
-                    total+=i
-                Toast.makeText(requireContext(),"$total",Toast.LENGTH_LONG).show()
+                val bundle = Bundle()
+                bundle.putIntegerArrayList("total", scoreList)
+                bundle.putIntegerArrayList("map", markList)
+                findNavController().navigate(R.id.quizResultDashboard)
             }
         }
 
@@ -136,46 +145,57 @@ class QuizFragment : Fragment()
         return optionsMap
     }
 
-    private fun answerCheck(optionsMap: ArrayList<ArrayList<String>>)
+    private fun answerCheck(optionsMap: ArrayList<ArrayList<String>>, c: Int)
     {
-        val ans = (optionsMap.get(c))
+        val ans = (optionsMap.get(this.c))
         var answer: String = ""
-        Toast.makeText(requireContext(),"${ans.size}",Toast.LENGTH_SHORT).show()
+        var flag = -1
+        //Toast.makeText(requireContext(),"${ans.size}",Toast.LENGTH_SHORT).show()
         if (!ans.isNullOrEmpty())
             answer = ans[4-1]
         binding.cardOption1.setOnClickListener {
             if (binding.optionText1.text.equals(answer))
             {
                 scoreList.add(1)
-                Toast.makeText(requireContext(),"true",Toast.LENGTH_SHORT).show()
+                //Toast.makeText(requireContext(),"true",Toast.LENGTH_SHORT).show()
+                MarkList.list.put(c,1)
             }
+            else
+                MarkList.list.put(c,0)
         }
 
         binding.cardOption2.setOnClickListener {
             if (binding.optionText2.text.equals(answer))
             {
                 scoreList.add(1)
-                Toast.makeText(requireContext(),"true",Toast.LENGTH_SHORT).show()
+                //Toast.makeText(requireContext(),"true",Toast.LENGTH_SHORT).show()
+                MarkList.list.put(c,1)
             }
+            else
+                MarkList.list.put(c,0)
         }
 
         binding.cardOption3.setOnClickListener {
             if (binding.optionText3.text.equals(answer))
             {
                 scoreList.add(1)
-                Toast.makeText(requireContext(),"true",Toast.LENGTH_SHORT).show()
+                //Toast.makeText(requireContext(),"true",Toast.LENGTH_SHORT).show()
+                MarkList.list.put(c,1)
             }
+            else
+                MarkList.list.put(c,0)
         }
 
         binding.cardOption4.setOnClickListener {
             if (binding.optionText4.text.equals(answer))
             {
                 scoreList.add(1)
-                Toast.makeText(requireContext(),"true",Toast.LENGTH_SHORT).show()
-
+                //Toast.makeText(requireContext(),"true",Toast.LENGTH_SHORT).show()
+                MarkList.list.put(c,1)
             }
+            else
+                MarkList.list.put(c,0)
         }
-
     }
 
 }
